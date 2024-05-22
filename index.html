@@ -150,7 +150,7 @@
     
       const book = { author, title, year, count };
     
-      fetch('https://kursova-app.test.azuremicroservices.io/spring-app-20240522094541/default/book/add', {
+      fetch('http://localhost:8080/book/add', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(book)
@@ -195,7 +195,7 @@
         trashIcon.style.cursor = 'pointer';
         trashIcon.onclick = function() {
           const countToDelete = inputNumber.value;
-          fetch(`https://kursova-app.test.azuremicroservices.io/spring-app-20240522094541/default/book/delete/${book.id}?count=${countToDelete}`, {
+          fetch(`http://localhost:8080/book/delete/${book.id}?count=${countToDelete}`, {
             method: 'DELETE'
           })
           .then(() => {
@@ -230,7 +230,7 @@
     }
     
     function fetchBooksAndUpdateTable() {
-      fetch('https://kursova-app.test.azuremicroservices.io/spring-app-20240522094541/default/book/getAll')
+      fetch('http://localhost:8080/book/getAll')
         .then(response => response.json())
         .then(data => {
           renderBooksTable(data);
@@ -245,7 +245,7 @@
       const sortByYearBtn = document.getElementById('sortByYearBtn');
     
       sortByAuthorBtn.addEventListener('click', function() {
-        fetch('https://kursova-app.test.azuremicroservices.io/spring-app-20240522094541/default/book/getAllSortedByAuthor')
+        fetch('http://localhost:8080/book/getAllSortedByAuthor')
           .then(response => response.json())
           .then(data => {
             renderBooksTable(data);
@@ -256,7 +256,7 @@
       });
     
       sortByYearBtn.addEventListener('click', function() {
-        fetch('https://kursova-app.test.azuremicroservices.io/spring-app-20240522094541/default/book/getAllSortedByYear')
+        fetch('http://localhost:8080/book/getAllSortedByYear')
           .then(response => response.json())
           .then(data => {
             renderBooksTable(data);
