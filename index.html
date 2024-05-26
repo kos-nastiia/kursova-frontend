@@ -160,7 +160,7 @@
 
           const book = { author, title, year, count, photoUrl }; // Додано photoUrl
 
-          fetch("http://localhost:8080/book/add", {
+          fetch("https://kursova2.azurewebsites.net/book/add", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(book),
@@ -201,7 +201,7 @@
           trashIcon.onclick = function () {
             const countToDelete = inputNumber.value;
             fetch(
-              `http://localhost:8080/book/delete/${book.id}?count=${countToDelete}`,
+              `https://kursova2.azurewebsites.net/book/delete/${book.id}?count=${countToDelete}`,
               {
                 method: "DELETE",
               }
@@ -244,7 +244,7 @@
       }
 
       function fetchBooksAndUpdateTable() {
-        fetch("http://localhost:8080/book/getAll")
+        fetch("https://kursova2.azurewebsites.net/book/getAll")
           .then((response) => response.json())
           .then((data) => {
 console.log(data);
@@ -260,7 +260,7 @@ console.log(data);
         const sortByYearBtn = document.getElementById("sortByYearBtn");
 
         sortByAuthorBtn.addEventListener("click", function () {
-          fetch("http://localhost:8080/book/getAllSortedByAuthor")
+          fetch("https://kursova2.azurewebsites.net/book/getAllSortedByAuthor")
             .then((response) => response.json())
             .then((data) => {
               renderBooksTable(data);
@@ -271,7 +271,7 @@ console.log(data);
         });
 
         sortByYearBtn.addEventListener("click", function () {
-          fetch("http://localhost:8080/book/getAllSortedByYear")
+          fetch("https://kursova2.azurewebsites.net/book/getAllSortedByYear")
             .then((response) => response.json())
             .then((data) => {
               renderBooksTable(data);
